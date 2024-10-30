@@ -64,7 +64,7 @@
 
 
 \section*{3. 演習課題の報告}
-プログラム全体の概要
+\subsection*{プログラム全体の概要}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture} [node distance=2.5cm]
@@ -76,6 +76,7 @@
         \node (search)[process2, right of=input, minimum width=2cm] {search};
         \node (show)  [process0, right of=search, minimum width=2cm] {show};
         \node (country)[process3, right=1cm of show, minimum width=2cm] {show\_country};
+        \node (rank)  [process2, below of=country, minimum width=2cm] {get\_medalrank};
         \node (data)  [io, below of=search, minimum width=2cm] {データ構造};
         \node (csv)   [io, below of=data, minimum width=2cm] {CSVファイル};
         \node (term)  [io, above of=show, minimum width=2cm] {ターミナル};
@@ -89,6 +90,8 @@
         \draw [arrow] (main) -- (sort);
         \draw [arrow] (main) -- (search);
         \draw [arrow] (main) -- (show);
+        \draw [arrow] (main) -- (country);
+        \draw [arrow] (data) -- (rank);
         \draw [arrow] (input)-- (data);
         \draw [arrow] (load) -- (data);
         \draw [arrow] (data) -- (save);
@@ -111,11 +114,9 @@
 \end{figure}
 
 
-担当した機能の構成と説明
-
-担当した機能の単体テストの方法と結果
-
-統合したプログラムの結合テストの方法と結果
+\subsection*{担当した機能の構成と説明}
+\subsection*{担当した機能の単体テストの方法と結果}
+\subsection*{統合したプログラムの結合テストの方法と結果}
 
 \section*{4. 実験の感想}
 % ここに感想を記入してください
