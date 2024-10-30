@@ -1,4 +1,25 @@
+# LaTeXの一時ファイルとログファイルを無視
 *.aux
-*.fdb_latexmk
-*.fls
 *.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# LaTeX中間ファイル
+*.dvi
+*.ps
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# その他の生成ファイル
+*.gz
+*.bak
+*.backup
