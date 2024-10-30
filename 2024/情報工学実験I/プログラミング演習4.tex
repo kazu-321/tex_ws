@@ -13,6 +13,8 @@
 \tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
 \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+
 
 \title{\underline{令和6年度 情報工学実験I 報告書}}
 \date{}
@@ -58,30 +60,47 @@
     レポート報告内容のまとめ、レポート作成
 \end{itemize}
 
+
 \section*{3. 演習課題の報告}
 プログラム全体の概要
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[node distance=2cm]
-        \node (start) [startstop] {開始};
-        \node (init) [process, below of=start] {初期化};
-        \node (input) [process, below of=init] {入力処理};
-        \node (decision) [decision, below of=input, yshift=-1cm] {条件判定};
-        \node (process1) [process, below of=decision, yshift=-1cm] {処理1};
-        \node (process2) [process, right of=decision, xshift=3cm] {処理2};
-        \node (end) [startstop, below of=process1] {終了};
-
-        \draw [arrow] (start) -- (init);
-        \draw [arrow] (init) -- (input);
-        \draw [arrow] (input) -- (decision);
-        \draw [arrow] (decision) -- node[anchor=east] {Yes} (process1);
-        \draw [arrow] (decision) -- node[anchor=south] {No} (process2);
-        \draw [arrow] (process1) -- (end);
-        \draw [arrow] (process2) |- (end);
+    \begin{tikzpicture} [node distance=2.5cm]
+        \node (main)  [startstop, minimum width=2cm] {main関数};
+        \node (sort) [process, below of=main, minimum width=2cm] {sort関数};
+        \node (load)  [process, left of=sort, minimum width=2cm] {load関数};
+        \node (save)  [process, below of=load, minimum width=2cm] {save関数};
+        \node (input)  [process, right of=sort, minimum width=2cm] {input関数};
+        \node (search)[process, right of=input, minimum width=2cm] {search関数};
+        \node (show)  [process, right of=search, minimum width=2cm] {show関数};
+        \node (data)  [io, below of=search, minimum width=2cm] {データ構造};
+        \node (csv)   [io, below of=data, minimum width=2cm] {CSVファイル};
+        \node (term)  [io, above of=search, minimum width=2cm] {ターミナル};
+        \draw [->] (main) -- (input);
+        \draw [->] (main) -- (load);
+        \draw [->] (main) -- (save);
+        \draw [->] (main) -- (sort);
+        \draw [->] (main) -- (search);
+        \draw [->] (main) -- (show);
+        \draw [->] (input)-- (data);
+        \draw [->] (load) -- (data);
+        \draw [->] (data) -- (save);
+        \draw [->] (data) -- (sort);
+        \draw [->] (sort) -- node{上書き} (data);
+        \draw [->] (data) -- (search);
+        \draw [->] (data) -- (show);
+        \draw [->] (csv)  -- node[below=1cm,right=1.5cm]{読み込み} (load);
+        \draw [->] (save) -- node[anchor=east]{書き込み} (csv);
+        \draw [->] (main) -- (term);
+        \draw [->] (term) -- (main);
+        \draw [->] (term) -- node[left=0.5cm,above=0.1cm]{入力} (search);
+        \draw [->] (term) -- (input);
+        \draw [->] (show) -- node[anchor=west]{表示} (term);
     \end{tikzpicture}
-    \caption{プログラムのフローチャート}
+    \caption{プログラムのフローチャート+\alpha}
     \label{fig:flowchart}
 \end{figure}
+
 
 担当した機能の構成と説明
 
