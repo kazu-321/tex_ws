@@ -7,13 +7,15 @@
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes.geometric, arrows,positioning}
 
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!20]
+\tikzstyle{process0} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!20]
+\tikzstyle{process1} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!20]
+\tikzstyle{process2} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{process3} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
-\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=pink!40]
 
 
 \title{\underline{令和6年度 情報工学実験I 報告書}}
@@ -67,35 +69,40 @@
     \centering
     \begin{tikzpicture} [node distance=2.5cm]
         \node (main)  [startstop, minimum width=2cm] {main関数};
-        \node (sort) [process, below of=main, minimum width=2cm] {sort関数};
-        \node (load)  [process, left of=sort, minimum width=2cm] {load関数};
-        \node (save)  [process, below of=load, minimum width=2cm] {save関数};
-        \node (input)  [process, right of=sort, minimum width=2cm] {input関数};
-        \node (search)[process, right of=input, minimum width=2cm] {search関数};
-        \node (show)  [process, right of=search, minimum width=2cm] {show関数};
+        \node (sort) [process0, below of=main, minimum width=2cm] {sort};
+        \node (load)  [process0, left of=sort, minimum width=2cm] {load};
+        \node (save)  [process0, below of=load, minimum width=2cm] {save};
+        \node (input)  [process1, right of=sort, minimum width=2cm] {input};
+        \node (search)[process2, right of=input, minimum width=2cm] {searc};
+        \node (show)  [process0, right of=search, minimum width=2cm] {show};
+        \node (country)[process3, right=1cm of show, minimum width=2cm] {show\_country};
         \node (data)  [io, below of=search, minimum width=2cm] {データ構造};
         \node (csv)   [io, below of=data, minimum width=2cm] {CSVファイル};
-        \node (term)  [io, above of=search, minimum width=2cm] {ターミナル};
-        \draw [->] (main) -- (input);
-        \draw [->] (main) -- (load);
-        \draw [->] (main) -- (save);
-        \draw [->] (main) -- (sort);
-        \draw [->] (main) -- (search);
-        \draw [->] (main) -- (show);
-        \draw [->] (input)-- (data);
-        \draw [->] (load) -- (data);
-        \draw [->] (data) -- (save);
-        \draw [->] (data) -- (sort);
-        \draw [->] (sort) -- node{上書き} (data);
-        \draw [->] (data) -- (search);
-        \draw [->] (data) -- (show);
-        \draw [->] (csv)  -- node[below=1cm,right=1.5cm]{読み込み} (load);
-        \draw [->] (save) -- node[anchor=east]{書き込み} (csv);
-        \draw [->] (main) -- (term);
-        \draw [->] (term) -- (main);
-        \draw [->] (term) -- node[left=0.5cm,above=0.1cm]{入力} (search);
-        \draw [->] (term) -- (input);
-        \draw [->] (show) -- node[anchor=west]{表示} (term);
+        \node (term)  [io, above of=show, minimum width=2cm] {ターミナル};
+        \node (len0202)[process2, above of=main, minimum width=2cm] {安田};
+        \node (kazu321)[process0, left of=len0202, minimum width=2cm] {橋本};
+        \node (kawawarika)[process1, right of=len0202, minimum width=2cm] {川和};
+        \node (ryuusei899)[process3, right of=kawawarika, minimum width=2cm] {鈴木};
+        \draw [arrow] (main) -- (input);
+        \draw [arrow] (main) -- (load);
+        \draw [arrow] (main) -- (save);
+        \draw [arrow] (main) -- (sort);
+        \draw [arrow] (main) -- (search);
+        \draw [arrow] (main) -- (show);
+        \draw [arrow] (input)-- (data);
+        \draw [arrow] (load) -- (data);
+        \draw [arrow] (data) -- (save);
+        \draw [arrow] (data) -- (sort);
+        \draw [arrow] (sort) -- node{上書き} (data);
+        \draw [arrow] (data) -- (search);
+        \draw [arrow] (data) -- (show);
+        \draw [arrow] (csv)  -- node[xshift=3cm, yshift=-1.2cm]{読み込み} (load);
+        \draw [arrow] (save) -- node[xshift=-0.5cm,yshift=-0.3cm]{書き込み} (csv);
+        \draw [arrow] (main) -- node[yshift=0.5cm]{コマンド入出力} (term);
+        \draw [arrow] (term) -- (main);
+        \draw [arrow] (term) -- node[xshift=-0.1cm,yshift=0.4cm]{入力} (search);
+        \draw [arrow] (term) -- (input);
+        \draw [arrow] (show) -- node[anchor=west]{表示} (term);
     \end{tikzpicture}
     \caption{プログラムのフローチャート+\alpha}
     \label{fig:flowchart}
