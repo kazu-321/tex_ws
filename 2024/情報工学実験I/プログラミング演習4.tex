@@ -73,7 +73,7 @@
         \node (load)  [process0, left of=sort, minimum width=2cm] {load};
         \node (save)  [process0, below of=load, minimum width=2cm] {save};
         \node (input)  [process1, right of=sort, minimum width=2cm] {input};
-        \node (search)[process2, right of=input, minimum width=2cm] {searc};
+        \node (search)[process2, right of=input, minimum width=2cm] {search};
         \node (show)  [process0, right of=search, minimum width=2cm] {show};
         \node (country)[process3, right=1cm of show, minimum width=2cm] {show\_country};
         \node (data)  [io, below of=search, minimum width=2cm] {データ構造};
@@ -103,6 +103,8 @@
         \draw [arrow] (term) -- node[xshift=-0.1cm,yshift=0.4cm]{入力} (search);
         \draw [arrow] (term) -- (input);
         \draw [arrow] (show) -- node[anchor=west]{表示} (term);
+        \draw [arrow] (country) -- (show);
+        \draw [arrow] (sort) edge[bend right,out=10] (country);
     \end{tikzpicture}
     \caption{プログラムのフローチャート+\alpha}
     \label{fig:flowchart}
