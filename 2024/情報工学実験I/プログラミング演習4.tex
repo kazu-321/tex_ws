@@ -1,16 +1,16 @@
-\documentclass[a4paper,12pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{luatexja} % LuaLaTeX用日本語パッケージ
+\documentclass[lualatex, ja=standard, a4j, 12pt]{bxjsarticle}
+\usepackage{luatexja-fontspec}
+\setmainjfont{IPAexGothic}
+
 \usepackage{geometry}
 \geometry{left=25mm,right=25mm,top=20mm,bottom=20mm}
+\usepackage{enumitem}
 
-\title{令和6年度 情報工学実験Ⅰ 報告書}
+\title{\underline{令和6年度 情報工学実験I 報告書}}
 \date{}
 
 \begin{document}
-
 \maketitle
-
 \section*{実験題目}
 \underline{プログラミング演習4}
 
@@ -18,44 +18,47 @@
 \underline{丸山教員，安細教員，周教員}
 
 \section*{実験日}
-\begin{itemize}
-    \item 令和6年 10月 2日 (水)
-    \item 令和6年 10月 16日 (水)
+\begin{itemize}[left=2em]
+    \item \underline{令和6年 10月 02日 (水)〜令和6年 10月 16日 (水)}
 \end{itemize}
 
 \section*{レポート}
-\begin{itemize}
-    \item 提出締切日: 令和6年 10月 30日 (水)
-    \item 受理最終日: 令和6年 11月 20日 (水)
-    \item 提出日: 令和6年 \underline{\hspace{1cm}} 月 \underline{\hspace{1cm}} 日 (\underline{\hspace{1cm}})
+\begin{itemize}[left=2em]
+    \item \underline{提出締切日: 令和6年 10月 30日 (水)}
+    \item \underline{受理最終日: 令和6年 11月 20日 (水)}
+    \item \underline{提出日: 令和6年 \underline{\hspace{1cm}} 月 \underline{\hspace{1cm}} 日 (\underline{\hspace{1cm}})}
 \end{itemize}
 
 \section*{報告者}
-2年 31番 氏名 \underline{橋本 千聡}
+\underline{2年 31番 氏名 橋本 千聡}
 
 \section*{共同実験者}
-川和 李圭, 鈴木 隆生, 安田 れん
+\underline{川和 李圭, 鈴木 隆生, 安田 れん}
 
 \newpage
+
 
 \section*{1. 実験の目的}
 プログラムの共同開発演習を通して、議論などを伴うチームでのプログラム作成手法を理解する。
 
 \section*{2. 実験の概要}
-\begin{itemize}
+\begin{itemize}[left=2em]
     \item 1・2週目: 実行環境の確認及びC言語サンプル実行確認 \\
     作成分担調整、分担一覧や全体構成の資料作成
     \item 3・4週目: 各自の担当箇所を作成、単体動作確認
-    \item 5・6週目: 各自の作成の関数を統合して動作確認、レポート報告内容のまとめ、レポート作成
+    \item 5・6週目: 各自の作成の関数を統合して動作確認 \\
+    レポート報告内容のまとめ、レポート作成
 \end{itemize}
 
 \section*{3. 演習課題の報告}
-\begin{itemize}
-    \item プログラム全体の概要
-    \item 担当した機能の構成と説明
-    \item 担当した機能の単体テストの方法と結果
-    \item 統合したプログラムの結合テストの方法と結果
-\end{itemize}
+プログラム全体の概要
+
+
+担当した機能の構成と説明
+
+担当した機能の単体テストの方法と結果
+
+統合したプログラムの結合テストの方法と結果
 
 \section*{4. 実験の感想}
 % ここに感想を記入してください
