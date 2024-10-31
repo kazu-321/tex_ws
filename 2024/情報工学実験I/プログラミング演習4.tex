@@ -113,9 +113,52 @@
     \label{fig:flowchart}
 \end{figure}
 
-
 \subsection*{担当した機能の構成と説明}
+
+\subsubsection*{sort関数}
+\begin{itemize}
+    \item 関数の説明: データ構造を並び替える
+    \item 関数の入力: モード
+    \item 関数の出力: なし(データ構造上書き)
+    \item 関数の処理内容: merge sortを行い、引数のmodeによって国名、金メダル数、銀メダル数、銅メダル数、総メダル数のいずれかで並び替える
+\end{itemize}
+
+
+\subsubsection*{load関数}
+\begin{itemize}
+    \item 関数の説明: CSVファイルからデータを読み込む
+    \item 関数の入力: ファイル名
+    \item 関数の出力: なし(データ構造上書き)
+    \item 関数の処理内容: 引数のファイル名からCSVファイルを読み込み、データ構造に格納する
+\end{itemize}
+
+\subsubsection*{save関数}
+\begin{itemize}
+    \item 関数の説明: データ構造をCSVファイルに書き込む
+    \item 関数の入力: ファイル名
+    \item 関数の出力: なし
+    \item 関数の処理内容: 引数のファイル名にデータ構造を書き込む
+\end{itemize}
+
+\subsubsection*{show関数}
+\begin{itemize}
+    \item 関数の説明: データ構造を表示する
+    \item 関数の入力: なし
+    \item 関数の出力: なし
+    \item 関数の処理内容: printfのフォーマット機能を駆使してテーブル形式でデータ構造を表示する
+\end{itemize}
+
+\subsubsection*{main関数}
+\begin{itemize}
+    \item 関数の説明: メイン関数
+    \item 関数の入力: 引数DEBUGの有無
+    \item 関数の出力: 標準出力
+    \item 関数の処理内容: bashをベースとしたターミナルでのコマンド入力を受け付け、各関数を呼び出す
+    \item その他: デバッグモードを有効にすると、各関数の詳細情報を表示する
+\end{itemize}
+
 \subsection*{担当した機能の単体テストの方法と結果}
+
 \subsection*{統合したプログラムの結合テストの方法と結果}
 
 \section*{4. 実験の感想}
