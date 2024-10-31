@@ -175,9 +175,7 @@
     void merge(country_data_type arr[], int left, int mid, int right, int mode) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
-    
         country_data_type L[n1], R[n2];
-    
         for (int i = 0; i < n1; i++)
             L[i] = arr[left + i];
         for (int j = 0; j < n2; j++)
@@ -213,10 +211,8 @@
     void mergeSort(country_data_type arr[], int left, int right, int mode) {
         if (left < right) {
             int mid = left + (right - left) / 2;
-    
             mergeSort(arr, left, mid, mode);
             mergeSort(arr, mid + 1, right, mode);
-    
             merge(arr, left, mid, right, mode);
         }
     }
@@ -234,6 +230,33 @@
     \item 関数の出力: なし(データ構造上書き)
     \item 関数の処理内容: 引数のファイル名からCSVファイルを読み込み、データ構造に格納する
 \end{itemize}
+\begin{lstlisting}[caption=load関数のコード, label=load, language=C]
+#include "main.h"
+
+void load(char* filename){
+    FILE *fp;
+    char full_filename[256];
+    snprintf(full_filename, sizeof(full_filename), "./data/%s.csv", filename);
+    printd("load file: %s\n", full_filename);
+    fp = fopen(full_filename, "r");
+    if(fp == NULL){
+        printf("ファイルが開けません\n");
+        return;
+    }
+    printd("load data start\n");
+    char buf[4][100];
+    fscanf(fp, "%[^,],%[^,],%[^,],%s\n", buf[0], buf[1], buf[2], buf[3]);
+    printd("header: %s, %s, %s, %s\n", buf[0], buf[1], buf[2], buf[3]);
+    data_size = 0;
+    while(fscanf(fp, "%[^,],%d,%d,%d\n", data[data_size].country, &data[data_size].gold, &data[data_size].silver, &data[data_size].bronze) != EOF){
+        printd("load data[%d]: %s %d %d %d %d\n", data_size, data[data_size].country, data[data_size].gold, data[data_size].silver, data[data_size].bronze, data[data_size].medal_rank);
+        data_size++;
+    }
+    get_medalrank(data_size);
+    get_sum();
+    fclose(fp);
+}
+\end{lstlisting}
 
 \subsubsection*{save関数}
 \begin{itemize}
@@ -242,6 +265,7 @@
     \item 関数の出力: なし
     \item 関数の処理内容: 引数のファイル名にデータ構造を書き込む
 \end{itemize}
+
 
 \subsubsection*{show関数}
 \begin{itemize}
