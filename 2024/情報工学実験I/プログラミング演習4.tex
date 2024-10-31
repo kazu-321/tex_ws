@@ -1,7 +1,34 @@
-\documentclass[lualatex, ja=standard, a4j, 12pt]{bxjsarticle}
-\usepackage{luatexja-fontspec}
-\setmainjfont{IPAexGothic}
+\RequirePackage{plautopatch}
+\documentclass[a4paper,11pt]{jsarticle}
 
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{listings,jvlisting}
+\usepackage{url}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+
+\lstset{
+  stringstyle={\ttfamily},
+  commentstyle={\ttfamily},
+  basicstyle={\ttfamily},
+  columns=fixed,
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,%行数を表示したければonにする
+  numberstyle={\scriptsize},
+  xrightmargin=0em,
+  xleftmargin=3em,
+  stepnumber=1,
+  numbersep=1em,
+  tabsize=2,
+  lineskip=-0.5ex,
+  backgroundcolor=\color{white}
+}
 \usepackage{geometry}
 \geometry{left=25mm,right=25mm,top=20mm,bottom=20mm}
 \usepackage{enumitem}
@@ -18,8 +45,10 @@
 \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=pink!40]
 
 
+
 \title{\underline{令和6年度 情報工学実験I 報告書}}
-\date{}
+\date{\empty}
+\author{\empty}
 
 \begin{document}
 \maketitle
@@ -109,7 +138,7 @@
         \draw [arrow] (country) -- (show);
         \draw [arrow] (sort) edge[bend right,out=10] (country);
     \end{tikzpicture}
-    \caption{プログラムのフローチャート+\alpha}
+    \caption{プログラムのフローチャート+$\alpha$}
     \label{fig:flowchart}
 \end{figure}
 
@@ -120,9 +149,83 @@
     \item 関数の説明: データ構造を並び替える
     \item 関数の入力: モード
     \item 関数の出力: なし(データ構造上書き)
-    \item 関数の処理内容: merge sortを行い、引数のmodeによって国名、金メダル数、銀メダル数、銅メダル数、総メダル数のいずれかで並び替える
+    \item 関数の処理内容: merge sortを行い、modeによって国名金銀銅総メダル数のいずれかで並び替える
 \end{itemize}
 
+\begin{lstlisting}[caption=sort関数のコード, label=sort]
+    #include "main.h"
+
+    // 安定な比較関数
+    int compare_by_mode(const country_data_type* a, const country_data_type* b, int mode) {
+        if (mode == 0) {
+            return strcmp(a->country, b->country);   // 国名で昇順
+        } else if (mode == 1) {
+            return b->gold - a->gold;   // 金メダル数で降順
+        } else if (mode == 2) {
+            return b->silver - a->silver;   // 銀メダル数で降順
+        } else if (mode == 3) {
+            return b->bronze - a->bronze;   // 銅メダル数で降順
+        } else if (mode == 4) {
+            return b->sum - a->sum;   // 合計メダル数で降順
+        }
+        return 0;  // デフォルトは等しいと見なす
+    }
+    
+    // 安定なマージ関数
+    void merge(country_data_type arr[], int left, int mid, int right, int mode) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+    
+        country_data_type L[n1], R[n2];
+    
+        for (int i = 0; i < n1; i++)
+            L[i] = arr[left + i];
+        for (int j = 0; j < n2; j++)
+            R[j] = arr[mid + 1 + j];
+    
+        int i = 0, j = 0, k = left;
+    
+        while (i < n1 && j < n2) {
+            if (compare_by_mode(&L[i], &R[j], mode) <= 0) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+    
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+    
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+    
+    // マージソート関数
+    void mergeSort(country_data_type arr[], int left, int right, int mode) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+    
+            mergeSort(arr, left, mid, mode);
+            mergeSort(arr, mid + 1, right, mode);
+    
+            merge(arr, left, mid, right, mode);
+        }
+    }
+    
+    // ソート関数
+    void sort(int mode) {
+        mergeSort(data, 0, data_size - 1, mode);
+    }
+\end{lstlisting}
 
 \subsubsection*{load関数}
 \begin{itemize}
