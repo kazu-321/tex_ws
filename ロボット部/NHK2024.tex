@@ -1,0 +1,81 @@
+\RequirePackage{plautopatch}
+\documentclass[a4paper,11pt]{jsarticle}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{listings,jvlisting}
+\usepackage{url}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\lstset{
+  stringstyle={	tfamily},
+  commentstyle={	tfamily},
+  basicstyle={	tfamily},
+  columns=fixed,
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,%行数を表示したければonにする
+  numberstyle={\scriptsize},
+  xrightmargin=0em,
+  xleftmargin=3em,
+  stepnumber=1,
+  numbersep=1em,
+  tabsize=2,
+  lineskip=-0.5ex,
+  backgroundcolor=\color{white}
+}
+\usepackage{geometry}
+\geometry{left=25mm,right=25mm,top=20mm,bottom=20mm}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows,positioning}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!20]
+\tikzstyle{process0} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!20]
+\tikzstyle{process1} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!20]
+\tikzstyle{process2} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{process3} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=pink!40]
+\title{NHK2024 反省レポート}
+\date{2024/11/20}
+\author{橋本 千聡}
+\begin{document}
+\maketitle
+\section*{個人的反省点}
+\begin{itemize}
+  \item プロジェクト名を途中らから変更したのは極めて良くなかった
+  \item 数字始まりはそれより良くないから来年以降は絶対にやめる
+  \item 命名規則が曖昧すぎるので直したい
+  \item 規格乱用をしてしまったのが大きな間違い...
+  \item 2.4GHzは。。。どうにかしよう！
+  \item もっと射出練習して100点を安定させればよかった
+  \item 
+\end{itemize}
+
+\section*{機構勝手な反省点}
+\begin{itemize}
+  \item 結構早めに機構自体はできていたこともあった
+  \item 予定があるときは事前に言って代理を建てるべき
+  \item 誰でも整備できるロボットを作ろう！！！
+\end{itemize}
+
+\section*{回路勝手な反省点}
+\begin{itemize}
+  \item 全体的には良かった
+  \item オーブン使うやつ失敗率低い(慣れの問題？)
+  \item 電源周りむずい
+  \item CANしか勝たん！！！！
+  \item モーターに正しい電圧を
+\end{itemize}
+
+\section*{制御全体の反省点}
+\begin{itemize}
+  \item 通信等の全体の流れがわかりやすいアーキ
+  \item C++に統一できたのはでかい(Unityは別)
+  \item 
+\end{itemize}
+\end{document}
