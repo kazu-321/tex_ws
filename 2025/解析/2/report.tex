@@ -44,10 +44,7 @@
 \date{2025-04-16}
 \author{橋本 千聡}
 \begin{document}
-% \maketitle
-% \newpage
-\section*{02-01}
-\section*{$(1) \int x\sin 2x dx$}
+\section*{02-01}\section*{$(1) \int x\sin 2x dx$}
 \begin{flalign*}
   &= \int x\left\{-\frac{1}{2}\cos 2x\right\}' dx &&\\
   &= -\frac{1}{2}x\cos 2x - \int -\frac{1}{2}\cos 2x dx &&\\
@@ -207,7 +204,21 @@
 
 \section*{02-04}
 \section*{$(1) \int x^2\sin xdx$}
+\begin{flalign*}
+  &= \int x^2(-\cos x)'dx &&\\
+  &= -x^2\cos x - \int -2x\cos x dx &&\\
+  &= -x^2\cos x - \int -2x(\sin x)' dx &&\\
+  &= -x^2\cos x - (-2x\sin x - \int -2\sin x dx) &&\\
+  &= -x^2\cos x +x2\sin x-2\sin x + C
+\end{flalign*}
 
 \section*{$(2) \int x^2e^{-x}dx$}
+\begin{flalign*}
+  &= \int -x^2(e^{-x})'dx &&\\
+  &= -x^2e^{-x} - \int -2xe^{-x}dx &&\\
+  &= -x^2e^{-x} - \int 2xe^{-x}dx &&\\
+  &= -x^2e^{-x} - (2xe^{-x} - \int 2e^{-x}dx)&&\\
+  &= -x^2e^{-x} - 2xe^{-x} - 2e^{-x} +C
+\end{flalign*}
 
 \end{document}
