@@ -34,24 +34,24 @@
             "\\usepackage{geometry}",
             "\\geometry{left=25mm,right=25mm,top=20mm,bottom=20mm}",
             "\\usepackage{enumitem}",
-            "\\usepackage{float}",
-            "\\usepackage{tikz}",
-            "\\usetikzlibrary{shapes.geometric, arrows,positioning}",
-            "\\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!20]",
-            "\\tikzstyle{process0} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!20]",
-            "\\tikzstyle{process1} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!20]",
-            "\\tikzstyle{process2} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]",
-            "\\tikzstyle{process3} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]",
-            "\\tikzstyle{arrow} = [thick,->,>=stealth]",
-            "\\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=pink!40]",
             "\\title{}",
             "\\date{}",
             "\\author{}",
             "\\begin{document}",
             "\\maketitle",
             "\\section*{}",
-            "\\end{document}",
+            "\\end{document}"
         ],
         "description": "授業レポート用テンプレート"
+    },
+    "math" : {
+        "prefix" : "math",
+        "body" : [
+            "\\section*{$1 $}",
+            "\\begin{flalign*}",
+            "    $2",
+            "\\end{flalign*}"
+        ],
+        "description" : "数式環境"
     }
 }
