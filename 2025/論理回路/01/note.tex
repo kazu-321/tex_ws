@@ -1,0 +1,48 @@
+\RequirePackage{plautopatch}
+\documentclass[a4paper,11pt]{jsarticle}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{listings,jvlisting}
+\usepackage{url}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\lstset{
+  stringstyle={	tfamily},
+  commentstyle={	tfamily},
+  basicstyle={	tfamily},
+  columns=fixed,
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,%行数を表示したければonにする
+  numberstyle={\scriptsize},
+  xrightmargin=0em,
+  xleftmargin=3em,
+  stepnumber=1,
+  numbersep=1em,
+  tabsize=2,
+  lineskip=-0.5ex,
+  backgroundcolor=\color{white}
+}
+\usepackage{geometry}
+\geometry{left=25mm,right=25mm,top=20mm,bottom=20mm}
+\usepackage{enumitem}
+\title{}
+\date{}
+\author{}
+\begin{document}
+% \maketitle
+\section*{$2. (2)$}
+\begin{flalign*}
+  X &= A\bar{B}\bar{C}+\bar{A}B\bar{C}+\bar{A}\bar{B}C+\bar{A}\bar{B}\bar{C} &&\\
+    &= A\bar{B}\bar{C}+\bar{A}(B\bar{C}+\bar{B}C+\bar{B}\bar{C}) &&\\
+    &= A\bar{B}\bar{C}+\bar{A}(\bar{B}(\bar{C}+C)+B\bar{C}) &&\\
+    &= A\bar{B}\bar{C}+\bar{A}(\bar{B}+B\bar{C}) &&\\
+    &= A\bar{B}\bar{C}+\bar{A}\bar{B}+\bar{A}B\bar{C} &&\\
+    &= \bar{A}\bar{B}+\bar{C}(A\bar{B}+\bar{A}B) &&\\
+    &= \bar{A}\bar{B}+\bar{C}(A \oplus B)
+\end{flalign*}
+\end{document}
