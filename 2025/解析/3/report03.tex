@@ -1,0 +1,186 @@
+\RequirePackage{plautopatch}
+\documentclass[a4paper,11pt]{jsarticle}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{listings,jvlisting}
+\usepackage{url}
+\usepackage{multicol}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{amssymb}
+\usepackage{bm}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\lstset{
+  stringstyle={	tfamily},
+  commentstyle={	tfamily},
+  basicstyle={	tfamily},
+  columns=fixed,
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,%行数を表示したければonにする
+  numberstyle={\scriptsize},
+  xrightmargin=0em,
+  xleftmargin=3em,
+  stepnumber=1,
+  numbersep=1em,
+  tabsize=2,
+  lineskip=-0.5ex,
+  backgroundcolor=\color{white}
+}
+\usepackage{geometry}
+\geometry{left=25mm,right=25mm,top=20mm,bottom=20mm}
+\usepackage{enumitem}
+\title{解析学前期03 いろいろな不定積分 課題}
+\date{締め切り 2025/04/29}
+\author{3I 31 橋本 千聡}
+\begin{document}
+\maketitle
+
+\begin{multicols}{2}
+
+\section*{03-01}
+\section*{$(1) \int e^x\cos xdx$}
+\noindent
+\begin{flalign*}
+  &= e^x\cos x + \int e^x\sin xdx &&\\
+  &= e^x\cos x + e^x\sin x - \int e^x\cos xdx &&\\
+  &= \frac{1}{2}e^x(\sin x + \cos x) + C &&
+\end{flalign*}
+
+\section*{$(2) \int e^{-x}\sin xdx$}
+\noindent
+\begin{flalign*}
+  &= e^{-x}\sin x - \int e^{-x}\cos xdx &&\\
+  &= e^{-x}\sin x - (-e^{-x}\cos x - \int e^{-x}\sin xdx) &&\\
+  &= e^{-x}\sin x + e^{-x}\cos x - \int e^{-x}\sin xdx &&\\
+  &= \frac{1}{2}e^{-x}(\sin x + \cos x) + C &&
+\end{flalign*}
+
+\section*{$(3)\ \displaystyle \int \sin(\log x)\,dx$}
+\noindent
+\begin{flalign*}
+  &t = \log x,\quad x = e^t,\quad dx = e^t dt &&\\
+  &\int \sin(\log x)\,dx = \int e^t\sin t\,dt &&\\
+  &\int e^t\sin t\,dt = e^t\sin t - \int e^t\cos t\,dt &&\\
+  &\text{さらに: }\int e^t\cos t\,dt = e^t\cos t + \int e^t\sin t\,dt &&\\
+  &\Rightarrow \int e^t\sin t\,dt - \int e^t\sin t\,dt
+    = e^t\sin t - e^t\cos t &&\\
+  &2\int e^t\sin t\,dt = e^t(\sin t - \cos t) &&\\
+  &\int e^t\sin t\,dt = \tfrac12 e^t(\sin t - \cos t) + C &&\\
+  &\therefore \int \sin(\log x)\,dx
+    = \tfrac12 x\bigl(\sin(\log x)-\cos(\log x)\bigr) + C &&
+\end{flalign*}
+
+\section*{03-02 $x+\sqrt{x^2+1} = t 、\int \frac{1}{\sqrt{x^2+1}}dx$}
+\noindent
+\begin{flalign*}
+  &\text{両辺を微分すると: } 1 + \frac{x}{\sqrt{x^2 + 1}} = \frac{dt}{dx} &&\\
+  &\text{したがって: } \frac{dt}{dx} = \frac{x + \sqrt{x^2 + 1}}{\sqrt{x^2 + 1}} = t &&\\
+  &\text{よって: } dx = \frac{dt}{t} \text{また: } \sqrt{x^2 + 1} = t - x &&\\
+  &\text{積分は次のように変形される: } \int \frac{1}{\sqrt{x^2 + 1}} dx = \int \frac{1}{t - x} \cdot \frac{dt}{t} &&\\
+  &\int \frac{1}{\sqrt{x^2 + 1}} dx = \int \frac{1}{t} dt = \log |t| + C &&\\
+  &\text{元の変数に戻して: } \log |x + \sqrt{x^2 + 1}| + C &&
+\end{flalign*}
+
+\section*{03-03 $\frac{x+3}{x(x-1)^2} = \frac ax + \frac b{x-1} + \frac c{(x-1)^2}  a,b,c の値を定めよ。\int \frac{x+3}{x(x-1)^2}dx$}
+\noindent
+\begin{flalign*}
+  x+3 &= a(x-1)^2 + b\,x(x-1) + c\,x &&\\
+  &= (a+b)x^2 +(-2a - b + c)x + a &&\\
+  \text{係数比較より: } &a+b=0,\quad -2a - b + c = 1,\quad a = 3 &&\\
+  &\Rightarrow a=3,\ b=-3,\ c=4 &&\\
+  \text{よって: } &\int \frac{x+3}{x(x-1)^2}\,dx
+  = \int\Bigl(\frac{3}{x}-\frac{3}{x-1}+\frac{4}{(x-1)^2}\Bigr)\,dx &&\\
+  &= 3\log\lvert x| - 3\log\lvert x-1| - \frac{4}{x-1} + C &&
+\end{flalign*}
+
+\section*{03-04}
+\section*{$ (1) \int \frac{3x^2-2x}{(x+2)(x-1)^2}dx$}
+\noindent
+\begin{flalign*}
+  & \frac{3x^2-2x}{(x+2)(x-1)^2} = \frac{\frac{16}{9}}{x+2}+\frac{\frac{11}{9}}{x-1}+\frac{\frac{1}{3}}{(x-1)^2} &&\\
+  (与式) &= \frac{16}{9}\log\lvert x+2| + \frac{11}{9}\log\lvert x-1| \\
+    & -\frac{1}{3(x-1)}+C &&
+\end{flalign*}
+
+
+
+\section*{$ (2) \int \frac{1}{x(x^2+1)}dx $}
+\noindent
+\begin{flalign*}
+  \frac{1}{x(x^2+1)}
+  &= \frac{1}{x} - \frac{x}{x^2+1},&&\\
+  (与式)
+  &= \int \left(\frac{1}{x} - \frac{x}{x^2+1}\right)dx&&\\
+  &= \log\lvert x| - \frac{1}{2}\log\lvert x^2+1| + C.
+\end{flalign*}
+
+\section*{03-05}
+\section*{$ (1) \int \frac{x^2+x+1}{x^2+1}dx$}
+\noindent
+\begin{flalign*}
+  &= \int \left(1+\frac{x}{x^2+1}\right)dx&&\\
+  &= \int 1\,dx + \int \frac{x}{x^2+1}\,dx&&\\
+  &= x + \frac{1}{2}\log\lvert x^2+1| + C.
+\end{flalign*}
+
+\section*{$ (2) \int \frac{x^4}{x^2-1}dx$}
+\noindent
+\begin{flalign*}
+  \frac{x^4}{x^2-1} &= x^2+1+\frac{1}{x^2-1} &&\\
+  \int\frac{x^4}{x^2-1}dx &= \int (x^2+1)dx+\int\frac{1}{x^2-1}dx &&\\
+  &= \frac{x^3}{3}+ x+\frac{1}{2}\log\Bigl|\frac{x-1}{x+1}\Bigr|+C. &&
+\end{flalign*}
+
+\section*{$ (3) \int \frac{x^3}{x^2-4}dx$}
+\noindent
+\begin{flalign*}
+  \frac{x^3}{x^2-4} &= x + \frac{4x}{x^2-4} &&\\
+  \int \frac{x^3}{x^2-4}dx &= \int x\,dx + 4\int \frac{x}{x^2-4}dx &&\\
+  &= \frac{x^2}{2} + 4\cdot\frac{1}{2}\log\bigl|x^2-4\bigr| + C &&\\
+  &= \frac{x^2}{2} + 2\log\bigl|x^2-4\bigr| + C. &&
+\end{flalign*}
+
+\section*{03-06 $ \tan \frac{x}{2} = tとおき \int\frac{1}{\sin x - 1}dx を求めよ$}
+\noindent
+\begin{flalign*}
+    &\tan\frac{x}{2}=t,\quad \sin x=\frac{2t}{1+t^2},\quad dx=\frac{2dt}{1+t^2}.&&\\
+    &\sin (x-1)=\frac{2t}{1+t^2}-1 =\frac{2t-1-t^2}{1+t^2} =-\frac{(t-1)^2}{1+t^2}.&&\\
+    &\text{よって, } \int\frac{1}{\sin x-1}\,dx=\int\frac{1+t^2}{-(t-1)^2}\cdot\frac{2dt}{1+t^2} &&\\
+    &=-2\int\frac{dt}{(t-1)^2}.&&\\
+    &\text{ここで } u=t-1\text{とおくと, } du=dt\text{。}&&\\
+    &\int\frac{du}{u^2}=-\frac{1}{u}+C 、\text{戻して, } &&\\
+    &\int\frac{1}{\sin x-1}\,dx
+    =\frac{2}{\tan\frac{x}{2}-1}+C.
+\end{flalign*}
+
+
+\section*{03-07}
+\section*{$ (1) \int \frac{1}{1+\tan x}dx$}
+\noindent
+\begin{flalign*}
+  &= \int \frac{\cos x}{\sin x+\cos x}\,dx = \frac{1}{2}\int \frac{(\sin x+\cos x)+(\cos x-\sin x)}{\sin x+\cos x}\,dx \\
+  &= \frac{1}{2}\int \Bigl(1+\frac{\cos x-\sin x}{\sin x+\cos x}\Bigr)\,dx \\
+  &= \frac{x}{2} + \frac{1}{2}\int \frac{\cos x-\sin x}{\sin x+\cos x}\,dx \\
+  &\text{ここで} u= \sin x+\cos x,\quad du = (\cos x-\sin x)dx, \\
+  \Rightarrow &\quad \int \frac{\cos x-\sin x}{\sin x+\cos x}\,dx = \log\lvert u\rvert + C 
+  = \log\lvert \sin x+\cos x\rvert + C, \\
+  \therefore &\quad \int \frac{1}{1+\tan x}\,dx 
+  = \frac{x}{2} + \frac{1}{2}\log\lvert \sin x+\cos x\rvert + C.
+\end{flalign*}
+
+\section*{$ (2) \int\frac{1}{3\sin x+4\cos x}dx$}
+\smallskip
+\noindent
+\begin{flalign*}
+  3\sin x+4\cos x 
+  &= 5\sin\Bigl(x+\arcsin\frac{4}{5}\Bigr),\\[1mm]
+  \int \frac{dx}{3\sin x+4\cos x}
+  &= \frac{1}{5}\int \csc\Bigl(x+\arcsin\frac{4}{5}\Bigr)dx\\[1mm]
+  &= \frac{1}{5}\ln\Bigl|\tan\Bigl(\frac{x+\arcsin\frac{4}{5}}{2}\Bigr)\Bigr|+C.
+\end{flalign*}
+
+\end{multicols}
+\end{document}

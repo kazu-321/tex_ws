@@ -48,6 +48,7 @@
         "prefix" : "math",
         "body" : [
             "\\section*{$1 $}",
+            "\\noindent",
             "\\begin{flalign*}",
             "    $2",
             "\\end{flalign*}"
