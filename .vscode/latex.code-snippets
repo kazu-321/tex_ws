@@ -1,0 +1,58 @@
+{
+    "report": {
+        "prefix": "report",
+        "body": [
+            "\\RequirePackage{plautopatch}",
+            "\\documentclass[a4paper,11pt]{jsarticle}",
+            "\\usepackage{color}",
+            "\\usepackage{subcaption}",
+            "\\usepackage{listings,jvlisting}",
+            "\\usepackage{url}",
+            "% 数式",
+            "\\usepackage{amsmath,amsfonts}",
+            "\\usepackage{bm}",
+            "% 画像",
+            "\\usepackage[dvipdfmx]{graphicx}",
+            "\\lstset{",
+            "  stringstyle={\ttfamily},",
+            "  commentstyle={\ttfamily},",
+            "  basicstyle={\ttfamily},",
+            "  columns=fixed,",
+            "  frame={tb},",
+            "  breaklines=true,",
+            "  columns=[l]{fullflexible},",
+            "  numbers=left,%行数を表示したければonにする",
+            "  numberstyle={\\scriptsize},",
+            "  xrightmargin=0em,",
+            "  xleftmargin=3em,",
+            "  stepnumber=1,",
+            "  numbersep=1em,",
+            "  tabsize=2,",
+            "  lineskip=-0.5ex,",
+            "  backgroundcolor=\\color{white}",
+            "}",
+            "\\usepackage{geometry}",
+            "\\geometry{left=25mm,right=25mm,top=20mm,bottom=20mm}",
+            "\\usepackage{enumitem}",
+            "\\title{}",
+            "\\date{}",
+            "\\author{}",
+            "\\begin{document}",
+            "\\maketitle",
+            "\\section*{}",
+            "\\end{document}"
+        ],
+        "description": "授業レポート用テンプレート"
+    },
+    "math" : {
+        "prefix" : "math",
+        "body" : [
+            "\\section*{$1 $}",
+            "\\noindent",
+            "\\begin{flalign*}",
+            "    $2",
+            "\\end{flalign*}"
+        ],
+        "description" : "数式環境"
+    }
+}
