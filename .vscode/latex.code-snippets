@@ -47,7 +47,7 @@
     "math" : {
         "prefix" : "math",
         "body" : [
-            "\\section*{$1 $}",
+            "\\section*{$ $1 $}",
             "\\noindent",
             "\\begin{flalign*}",
             "    $2",

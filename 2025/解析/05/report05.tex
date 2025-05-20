@@ -1,0 +1,45 @@
+\RequirePackage{plautopatch}
+\documentclass[a4paper,11pt]{jsarticle}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{listings,jvlisting}
+\usepackage{url}
+\usepackage{multicol}
+% 数式
+\usepackage{amsmath,amsfonts}
+\usepackage{bm}
+% 画像
+\usepackage[dvipdfmx]{graphicx}
+\lstset{
+  stringstyle={	tfamily},
+  commentstyle={	tfamily},
+  basicstyle={	tfamily},
+  columns=fixed,
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,%行数を表示したければonにする
+  numberstyle={\scriptsize},
+  xrightmargin=0em,
+  xleftmargin=3em,
+  stepnumber=1,
+  numbersep=1em,
+  tabsize=2,
+  lineskip=-0.5ex,
+  backgroundcolor=\color{white}
+}
+\usepackage{geometry}
+\geometry{left=25mm,right=25mm,top=20mm,bottom=20mm}
+\usepackage{enumitem}
+\title{解析学05 定積分}
+\date{2025/05/13}
+\author{3I 31 橋本 千聡}
+\begin{document}
+\maketitle
+\begin{multicols}{2}
+  
+\section*{$ (1) f(x) = \int_{1}^{x-3}(x-3-p)\log p dp $}
+\noindent
+  
+\end{multicols}
+\end{document}
