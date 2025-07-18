@@ -37,19 +37,50 @@
 \begin{document}
 \maketitle
 \begin{multicols}{2}
+  
+% \section*{06-01}
+% \section*{$ (1) \int_0^a f(x)dx = \int_0^a f(a-x) dx$}
+% \noindent
+% \begin{flalign*}
+%     &=    &&
+% \end{flalign*}
+
+% \section*{$ (2) \int_0^{\frac\pi2}\frac{\cos x}{\cos x +\sin x}dx$}
+% \noindent
+% \begin{flalign*}
+%     &=    &&
+% \end{flalign*}
+
 \section*{06-01}
 
 \section*{$ (1) \int_0^a f(x)dx = \int_0^a f(a-x) dx$}
 \noindent
 \begin{flalign*}
-    &=    &&
+    \text{与式} &= \int_0^a f(x)dx \\
+    &\text{変数変換 } t = a - x \\
+    &dt = -dx \\
+    &= \int_{x=0}^{x=a} f(a - x)dx \\
+    &= \int_{t=a}^{t=0} f(t)(-dt) \\
+    &= \int_0^a f(t)dt \\
+    &= \int_0^a f(x)dx &&
 \end{flalign*}
 
 \section*{$ (2) \int_0^{\frac\pi2}\frac{\cos x}{\cos x +\sin x}dx$}
 \noindent
 \begin{flalign*}
-    &=    &&
+    \text{与式} &= \int_0^{\frac{\pi}{2}} \frac{\cos x}{\cos x + \sin x} dx \\
+    &\text{変数変換 } t = \frac{\pi}{2} - x \\
+    &dt = -dx \\
+    &= \int_{x=0}^{x=\frac{\pi}{2}} \frac{\cos x}{\cos x + \sin x} dx \\
+    &= \int_{t=\frac{\pi}{2}}^{t=0} \frac{\cos(\frac{\pi}{2} - t)}{\cos(\frac{\pi}{2} - t) + \sin(\frac{\pi}{2} - t)} (-dt) \\
+    &= \int_0^{\frac{\pi}{2}} \frac{\sin t}{\sin t + \cos t} dt \\
+    \text{また}& \quad \text{与式} = \int_0^{\frac{\pi}{2}} \frac{\sin x}{\cos x + \sin x} dx \\
+    \text{よって} \quad 2I = \int_0^{\frac{\pi}{2}} \left( \frac{\cos x + \sin x}{\cos x + \sin x} \right) dx \\
+    &= \int_0^{\frac{\pi}{2}} 1 dx \\
+    &= \frac{\pi}{2} \\
+    I &= \frac{\pi}{4} &&
 \end{flalign*}
+
 
 \section*{06-02}
 \section*{$ (1) \int_0^{\frac\pi2} x\cos 3xdx$}
